@@ -17,10 +17,9 @@ public class PieceController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("mouse is down");
+        Debug.Log("mouse is pressed down");
         Vector2 seedPiece = piece.GetGridPosition();
         Debug.Log("X: " + seedPiece.x + " Y: " + seedPiece.y);
-
         GridController controller = GameObject.Find("GameManager").GetComponent<GridController>();
         controller.pressedDown = true;
         controller.pressedDownPosition = seedPiece;
@@ -32,7 +31,6 @@ public class PieceController : MonoBehaviour
         Debug.Log("mouse is up");
         Vector2 seedPiece = piece.GetGridPosition();
         Debug.Log("X: " + seedPiece.x + " Y: " + seedPiece.y);
-
         GridController controller = GameObject.Find("GameManager").GetComponent<GridController>();
         controller.pressedDown = false;
         controller.pressedDownPosition = Vector2.zero;

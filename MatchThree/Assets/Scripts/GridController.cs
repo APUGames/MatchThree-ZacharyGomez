@@ -30,9 +30,9 @@ public class GridController : MonoBehaviour
     public GameObject pressedDownGameObject;
     public GameObject pressedUpGameObject;
 
-    [Header("UI")]
-    [SerializeField]
-    private GameObject matchesFoundText;
+ //   [Header("UI")]
+  //  [SerializeField]
+  //  private GameObject matchesFoundText;
 
     private Vector2 startMovementPiecePosition;
     private Vector2 endMovementPiecePosition;
@@ -125,7 +125,7 @@ public class GridController : MonoBehaviour
             matchesFound += 1;
         }
 
-        matchesFoundText.GetComponent<Text>().text = matchesFound.ToString();
+     //   matchesFoundText.GetComponent<Text>().text = matchesFound.ToString();
     }
 
     private Piece GetGridPiece(int row, int column)
@@ -144,7 +144,6 @@ public class GridController : MonoBehaviour
         catch (IndexOutOfRangeException)
         {
         }
-
         return null;
     }
 
@@ -190,7 +189,7 @@ public class GridController : MonoBehaviour
                 Debug.Log("Bottom piece type: " + bottomPiece1.GetPieceType());
                 Piece midPiece1 = GetGridPiece((int)start.x, (int)start.y);
                 Piece toDestroy1 = GetGridPiece((int)end.x, (int)end.y);
-                Debug.Log("Mid piece type: " + midPiece1.GetPieceType());
+                Debug.Log("Middle piece type: " + midPiece1.GetPieceType());
                 if (topPiece1.GetPieceType() == bottomPiece1.GetPieceType())
                 {
                     if (topPiece1.GetPieceType() == midPiece1.GetPieceType())
@@ -200,7 +199,7 @@ public class GridController : MonoBehaviour
                         topPiece1.SetForDestruction();
                         bottomPiece1.SetForDestruction();
                         toDestroy1.SetForDestruction();
-                        Debug.Log("MATCH");
+                        Debug.Log("MATCHED");
                     }
                 }
             }
@@ -227,7 +226,7 @@ public class GridController : MonoBehaviour
                         leftPiece.SetForDestruction();
                         leftLeftPiece.SetForDestruction();
                         toDestroy2.SetForDestruction();
-                        Debug.Log("MATCH");
+                        Debug.Log("MATCHED");
                     }
                 }
             }
@@ -254,7 +253,7 @@ public class GridController : MonoBehaviour
                         rightPiece.SetForDestruction();
                         rightRightPiece.SetForDestruction();
                         toDestroy2.SetForDestruction();
-                        Debug.Log("MATCH");
+                        Debug.Log("MATCHED");
                     }
                 }
             }
@@ -281,7 +280,7 @@ public class GridController : MonoBehaviour
                         rightPiece.SetForDestruction();
                         leftPiece.SetForDestruction();
                         toDestroy2.SetForDestruction();
-                        Debug.Log("MATCH");
+                        Debug.Log("MATCHED");
                     }
                 }
             }
@@ -308,7 +307,7 @@ public class GridController : MonoBehaviour
                         abovePiece.SetForDestruction();
                         aboveAbovePiece.SetForDestruction();
                         toDestroy2.SetForDestruction();
-                        Debug.Log("MATCH");
+                        Debug.Log("MATCHED");
                     }
                 }
             }
@@ -316,8 +315,7 @@ public class GridController : MonoBehaviour
             {
             }
         }
-
-        Debug.Log("bad move");
+        Debug.Log("Not a Move");
     }
     public bool IsDestroyed(Vector2 gridPosition)
     {
