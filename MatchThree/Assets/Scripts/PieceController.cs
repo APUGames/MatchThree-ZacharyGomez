@@ -8,32 +8,40 @@ public class PieceController : MonoBehaviour
 
     private void LateUpdate()
     {
-        GridController controller = GameObject.Find("GameManager").GetComponent<GridController>();
-        if (controller.IsDestroyed(piece.GetGridPosition()))
+        GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        if (!gameManager.IsGameOver())
         {
-            Destroy(gameObject);
+            GridController controller = GameObject.Find("GameManager").GetComponent<GridController>();
+            if (controller.IsDestroyed(piece.GetGridPosition()))
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
     private void OnMouseDown()
     {
-        Debug.Log("mouse is pressed down");
-        Vector2 seedPiece = piece.GetGridPosition();
-        Debug.Log("X: " + seedPiece.x + " Y: " + seedPiece.y);
-        GridController controller = GameObject.Find("GameManager").GetComponent<GridController>();
-        controller.pressedDown = true;
-        controller.pressedDownPosition = seedPiece;
-        controller.pressedDownGameObject = this.gameObject;
+        GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        if (!gameManager.IsGameOver())
+        {
+            Vector2 seedPiece = piece.GetGridPosition();
+            GridController controller = GameObject.Find("GameManager").GetComponent<GridController>();
+            controller.pressedDown = true;
+            controller.pressedDownPosition = seedPiece;
+            controller.pressedDownGameObject = this.gameObject;
+        }
     }
 
     private void OnMouseUp()
     {
-        Debug.Log("mouse is up");
-        Vector2 seedPiece = piece.GetGridPosition();
-        Debug.Log("X: " + seedPiece.x + " Y: " + seedPiece.y);
-        GridController controller = GameObject.Find("GameManager").GetComponent<GridController>();
-        controller.pressedDown = false;
-        controller.pressedDownPosition = Vector2.zero;
+        GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        if (!gameManager.IsGameOver())
+        {
+            Vector2 seedPiece = piece.GetGridPosition();
+            GridController controller = GameObject.Find("GameManager").GetComponent<GridController>();
+            controller.pressedDown = false;
+            controller.pressedDownPosition = Vector2.zero;
+        }
     }
 
     private void OnMouseOver()
@@ -43,12 +51,9 @@ public class PieceController : MonoBehaviour
 
         if (controller.pressedDown && (controller.pressedDownPosition != seedPiece))
         {
-            Debug.Log("mouse is over");
-            Debug.Log("X: " + seedPiece.x + " Y: " + seedPiece.y);
             controller.pressedDown = false;
             controller.pressedUpPosition = seedPiece;
             controller.pressedUpGameObject = this.gameObject;
-
             controller.ValidMove(controller.pressedDownPosition, seedPiece);
         }
     }

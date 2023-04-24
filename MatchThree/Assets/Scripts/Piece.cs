@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections.Generic;
 public enum PieceTypes
 {
     Rat = 0,
@@ -21,14 +21,14 @@ public class Piece
     {
         position = Vector3.zero;
         gridPosition = Vector2.zero;
-        pieceType = PieceTypes.Rat;
+      //  pieceType = PieceTypes.Rat;
         setForDestruction = false;
     }
     public Piece(Vector3 position, Vector2 gridPosition)
     {
         this.position = position;
         this.gridPosition = gridPosition;
-        this.pieceType = PieceTypes.Rat3;
+      //  this.pieceType = PieceTypes.Rat3;
         this.setForDestruction = false;
     }
     public Piece(Vector3 position, Vector2 gridPosition, PieceTypes pieceType)
@@ -42,6 +42,11 @@ public class Piece
     {
         this.setForDestruction = true;
     }
+    public void SetForDestruction(bool value)
+    {
+        this.setForDestruction = value;
+    }
+
     public void SetPieceType(PieceTypes pieceType)
     {
         this.pieceType = pieceType;
