@@ -19,12 +19,16 @@ public class GameManager : MonoBehaviour
     private GameObject AttemptsGameObject;
     [SerializeField]
     private GameObject matchesFoundGameObject;
+    [SerializeField]
+    private GameObject RestartButtonObject;
     private bool gameOver = false;
     private int matchesFound = 0;
 
     private void Start()
     {
         gameOverPanelGameObject.SetActive(false);
+        RestartButtonObject.SetActive(false);
+
     }
     private void Update()
     {
@@ -45,12 +49,14 @@ public class GameManager : MonoBehaviour
         else
         {
             gameOverPanelGameObject.SetActive(true);
-            if (matchesFound == scoreToMatch)
+            if (matchesFound >= scoreToMatch)
             {
                 gameResultText.text = "WINNER, THE RATS ARE GONE";
                 AttemptsGameObject.SetActive(false);
                 matchesFoundGameObject.SetActive(false);
                 turnsLeftText.text = " ";
+                RestartButtonObject.SetActive(true);
+
             }
             else
             {
@@ -58,6 +64,7 @@ public class GameManager : MonoBehaviour
                 AttemptsGameObject.SetActive(false);
                 matchesFoundGameObject.SetActive(false);
                 turnsLeftText.text = " ";
+                RestartButtonObject.SetActive(true);
 
             }
         }

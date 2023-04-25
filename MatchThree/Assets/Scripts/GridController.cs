@@ -43,7 +43,7 @@ public class GridController : MonoBehaviour
     {
         matchesFound = 0;
         pressedDown = false;
-        System.Random rand = new System.Random();
+//        System.Random rand = new System.Random();
 
         for (int row = 0; row < grid.GetLength(0); row++)
         {
@@ -51,7 +51,8 @@ public class GridController : MonoBehaviour
             {
                 Vector3 newWorldPosition = new Vector3(originPosition.x + row, originPosition.y, originPosition.z - column);
                 Piece newPiece = new Piece(newWorldPosition, new Vector2(row, column));
-                GameObject gameObject = Instantiate(piecePrefab, newPiece.GetPosition(), Quaternion.identity);
+                    GameObject gameObject = Instantiate(piecePrefab, newPiece.GetPosition(), Quaternion.identity);
+                System.Random rand = new System.Random();
                 int theNumber = rand.Next(13, 101);
                 if (theNumber > 30 && theNumber < 45)
                 {
@@ -210,7 +211,7 @@ public class GridController : MonoBehaviour
                     }
                 }
             }
-            catch (IndexOutOfRangeException)
+            catch (NullReferenceException)
             {
             }
         }
@@ -229,7 +230,6 @@ public class GridController : MonoBehaviour
                         matchFound = true;
                         validMoveInProcess = true;
                         Piece toDestroy2 = grid[(int)end.x, (int)end.y];
-
                         leftPiece.SetForDestruction();
                         leftLeftPiece.SetForDestruction();
                         toDestroy2.SetForDestruction();
