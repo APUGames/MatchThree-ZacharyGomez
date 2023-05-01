@@ -10,7 +10,6 @@ public enum PieceTypes
     Rat5 = 5,
     Rat6 = 6
 }
-
 public class Piece
 {
     private Vector3 position;
@@ -46,7 +45,6 @@ public class Piece
     {
         this.setForDestruction = value;
     }
-
     public void SetPieceType(PieceTypes pieceType)
     {
         this.pieceType = pieceType;

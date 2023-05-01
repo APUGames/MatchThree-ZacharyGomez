@@ -211,9 +211,12 @@ public class GridController : MonoBehaviour
                     }
                 }
             }
+
             catch (NullReferenceException)
             {
+
             }
+
         }
 
         if (!matchFound)
@@ -340,7 +343,6 @@ public class GridController : MonoBehaviour
             }
         }
         SubtractMove();
-        Debug.Log("Not Moving");
     }
     public bool IsDestroyed(Vector2 gridPosition)
     {

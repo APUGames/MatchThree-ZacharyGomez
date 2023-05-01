@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
             gameOverPanelGameObject.SetActive(true);
             if (matchesFound >= scoreToMatch)
             {
-                gameResultText.text = "WINNER, THE RATS ARE GONE";
+                gameResultText.text = "GAME WIN, RATS EXTERMINATED";
                 AttemptsGameObject.SetActive(false);
                 matchesFoundGameObject.SetActive(false);
                 turnsLeftText.text = " ";
